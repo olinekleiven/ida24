@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gratulerer med dagen, Ida — 24</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Caveat:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+  <div id="balloon-layer" aria-hidden="true"></div>
+  <div id="yt-player" aria-hidden="true"></div>
+
+  <!-- ================================================
+       HERO
+  ================================================ -->
+  <section class="hero" id="topp">
+    <div class="hero__orb hero__orb--1" aria-hidden="true"></div>
+    <div class="hero__orb hero__orb--2" aria-hidden="true"></div>
+    <div class="hero__orb hero__orb--3" aria-hidden="true"></div>
+
+    <div class="hero__inner">
+      <p class="hero__kicker animate-opp" style="--d:.1s">12. mars 2026</p>
+      <h1 class="hero__tittel">
+        <span class="hero__linje  animate-opp" style="--d:.25s">Happy</span>
+        <span class="hero__tall   animate-opp" style="--d:.4s">24</span>
+        <span class="hero__script animate-opp" style="--d:.55s">Birthday, Ida</span>
+      </h1>
+      <div class="hero__cta animate-opp" style="--d:.85s">
+        <a href="#gave" class="btn-ned" id="heroKnapp">
+          <span>Klikk her</span>
+          <span class="btn-ned__pil" aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </div>
+
+    <div id="heroPartikler" class="hero__partikler" aria-hidden="true"></div>
+  </section>
+
+  <!-- ================================================
+       GAVE-SCENE
+  ================================================ -->
+  <section class="gave-scene" id="gave">
+    <div class="gave-scene__orb gave-scene__orb--1" aria-hidden="true"></div>
+    <div class="gave-scene__orb gave-scene__orb--2" aria-hidden="true"></div>
+    <div class="gave-scene__spotlight"               aria-hidden="true"></div>
+
+    <div class="gave-scene__inner">
+      <p class="gave-scene__til">til deg, Ida</p>
+
+      <div class="gave-wrap">
+        <span class="g-spark g-spark--1" aria-hidden="true">✦</span>
+        <span class="g-spark g-spark--2" aria-hidden="true">✦</span>
+        <span class="g-spark g-spark--3" aria-hidden="true">✦</span>
+        <span class="g-spark g-spark--4" aria-hidden="true">✦</span>
+
+        <div class="gave" id="giftBox" role="button" tabindex="0" aria-label="Åpne gaven din">
+          <!-- Lokk -->
+          <div class="gave__lokk">
+            <div class="gave__lokk-band"></div>
+            <div class="gave__bow" aria-hidden="true">
+              <div class="gave__bow-l"></div>
+              <div class="gave__bow-r"></div>
+              <div class="gave__bow-knot"></div>
+              <div class="gave__bow-tail gave__bow-tail--l"></div>
+              <div class="gave__bow-tail gave__bow-tail--r"></div>
+            </div>
+          </div>
+          <!-- Kropp -->
+          <div class="gave__kropp">
+            <div class="gave__band-v"></div>
+            <div class="gave__band-h"></div>
+            <div class="gave__glod" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <p class="gave-cta" id="gaveCta">Trykk for å åpne</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================
+       BREV-OVERLAY  (vises når gaven åpnes)
+  ================================================ -->
+  <div class="brev-overlay" id="brevOverlay" aria-hidden="true">
+    <div class="brev-bakgrunn"></div>
+    <article class="brev-kort" id="brevKort" role="dialog" aria-label="Bursdagsbrev til Ida">
+
+      <!-- Tre mini-polaroids øverst i brevet -->
+      <div class="brev-foto-strip" aria-hidden="true">
+
+      <header class="brev-header">
+        <h2 class="brev-til">Kjære Ida,</h2>
+      </header>
+
+      <div class="brev-tekst">
+        <!-- REDIGER BREVET HER -->
+        <p>
+          Fireogtjue år, hina tiden går. Håpa du får ei fin feiring i Oslo - (ha ein pakke på lur til deg som du får seinare). 
+        </p>
+        <p>
+          Du er ei unik dama som fyller rommet med latter og glede på ein slik måte som gjer at alle føler seg vell. 
+          Eg er veldig takknemlig for at du er akkurat den du er - eg kjem snart på besøk igjen.
+        </p>
+        <p>
+          Eg heia på deg - følg alle drømmane dine, og vit at eg alltid er her for deg, uansett ke. 
+          Gratulera så mye med dagen, elska deg!
+        </p>
+      </div>
+
+      <footer class="brev-footer">
+        <p class="brev-signatur">Klem frå</p>
+        <!-- BYTT UT NAVN HER -->
+        <p class="brev-navn">Oline</p>
+      </footer>
+
+      <button class="brev-knapp" id="brevKnapp">
+        <span>Se minner</span>
+        <span class="brev-knapp__pil" aria-hidden="true">→</span>
+      </button>
+
+    </article>
+  </div>
+
+  <!-- ================================================
+       MINNER / EDITORIAL GALLERI
+  ================================================ -->
+
+  <section class="slideshow-scene" id="slideshow" aria-hidden="true">
+    <div class="slideshow-header">
+      <p class="slideshow-eyebrow">Vakre gode minner </p>
+      <h2 class="slideshow-tittel">... av Ida (Maria) Bruheim Borlaug !</h2>
+    </div>
+
+    <div class="slideshow" id="autoSlideshow" aria-live="polite"></div>
+
+    <div class="galleri-musikk" id="galleriMusikk">
+      <p class="galleri-musikk__tekst">ja, du kan pause denne</p>
+      <div class="galleri-musikk__rad">
+        <audio id="galleriAudio" controls loop preload="metadata">
+          <source src="Sang/Hurra for deg som fyller ditt år.mp3" type="audio/mpeg" />
+        </audio>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
