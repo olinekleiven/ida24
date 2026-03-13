@@ -36,6 +36,22 @@ function startMusikk() {
   }
 }
 
+function visGalleriMusikkSpiller() {
+  const galleriMusikk = document.getElementById('galleriMusikk');
+  if (!galleriMusikk) return;
+  galleriMusikk.classList.add('synlig');
+}
+
+function visBrevOverlay() {
+  const overlay = document.getElementById('brevOverlay');
+  if (!overlay) return;
+  overlay.style.display = 'flex';
+  overlay.removeAttribute('aria-hidden');
+  overlay.classList.add('synlig');
+  document.body.style.overflow = 'hidden';
+  visGalleriMusikkSpiller();
+}
+
 // Start musikk når brukeren klikker "Klikk her" på hero
 document.getElementById('heroKnapp').addEventListener('click', () => {
   startMusikk();
@@ -169,7 +185,10 @@ function slippBallonger(rect, antall = 12) {
 
   /* STEG 1 — Klikk på gaven: åpne lokket */
   function aapneGave() {
-    if (aapnet) return;
+    if (aapnet) {
+      visBrev();
+      return;
+    }
     aapnet = true;
 
     gave.classList.add('aapnet');
@@ -190,9 +209,7 @@ function slippBallonger(rect, antall = 12) {
 
   /* STEG 2 — Vis brev-overlay */
   function visBrev() {
-    overlay.removeAttribute('aria-hidden');
-    overlay.classList.add('synlig');
-    document.body.style.overflow = 'hidden'; // Lås scroll mens brev leses
+    visBrevOverlay();
   }
 
   /* STEG 3 — Klikk "Se minner": lukk brev, åpne galleri */
@@ -233,6 +250,7 @@ function visMinner() {
   }
   if (footer) footer.style.display = 'block';
 
+  visGalleriMusikkSpiller();
   startGalleriMusikk();
 
   const scrollTarget = seksjon || slideshowSeksjon;
@@ -358,9 +376,11 @@ function visMinner() {
 
 /* ── Lokal galleri-musikk ──────────────────────────────── */
 const galleriAudio = document.getElementById('galleriAudio');
+let galleriMusikkStartet = false;
 
 function startGalleriMusikk() {
-  if (!galleriAudio) return;
+  if (!galleriAudio || galleriMusikkStartet) return;
+  galleriMusikkStartet = true;
 
   if (ytSpiller && musikKlar) {
     const tilstand = ytSpiller.getPlayerState();
@@ -377,10 +397,4 @@ function startGalleriMusikk() {
 
 if (galleriAudio) {
   galleriAudio.volume = 0.85;
-
-  const forsokAutoStart = () => {
-    startGalleriMusikk();
-    window.removeEventListener('pointerdown', forsokAutoStart);
-  };
-  window.addEventListener('pointerdown', forsokAutoStart, { once: true });
 }

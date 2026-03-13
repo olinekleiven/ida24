@@ -416,7 +416,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 /* "Se minner"-knapp */
 .brev-knapp {
   display: inline-flex; align-items: center; gap: 10px;
-  margin-top: 40px; padding: 15px 40px;
+  margin-top: 20px; padding: 15px 40px;
   border: 1.5px solid rgba(201,151,60,.4); border-radius: 100px;
   background: transparent; color: var(--tekst-2);
   font-family: var(--serif); font-style: italic; font-size: 1rem;
@@ -688,9 +688,30 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 
 .galleri-musikk {
-  width: min(98vw, 1420px);
-  margin: 20px auto 0;
+  position: fixed;
+  left: 50%;
+  bottom: 14px;
+  transform: translate(-50%, 16px);
+  z-index: 9950;
+  width: min(96vw, 980px);
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(217,96,122,.25);
+  background: rgba(255, 241, 247, .82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 14px 30px rgba(30, 8, 14, .16);
   text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s var(--ease), transform .35s var(--ease);
+}
+
+.galleri-musikk.synlig {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
 }
 
 .galleri-musikk__tekst {
